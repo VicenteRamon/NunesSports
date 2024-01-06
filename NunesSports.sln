@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NunesSports", "NunesSports\NunesSports.csproj", "{B2E1B4B5-4598-4542-8FD7-C7D57ECDC012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NunesSports", "NunesSports\NunesSports.csproj", "{B2E1B4B5-4598-4542-8FD7-C7D57ECDC012}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E894E4D5-F363-48A9-AAF4-CBAA2E456138} = {E894E4D5-F363-48A9-AAF4-CBAA2E456138}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NunesSports.Client", "NunesSports.Client\NunesSports.Client.csproj", "{6C798929-BDF8-4D7C-9680-E3FBFA7B90D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NunesSports.Client", "NunesSports.Client\NunesSports.Client.csproj", "{6C798929-BDF8-4D7C-9680-E3FBFA7B90D0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E894E4D5-F363-48A9-AAF4-CBAA2E456138} = {E894E4D5-F363-48A9-AAF4-CBAA2E456138}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Shared", "..\Product.Shared\Product.Shared.csproj", "{E894E4D5-F363-48A9-AAF4-CBAA2E456138}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NunesSports.Shared", "..\Product.Shared\NunesSports.Shared.csproj", "{E894E4D5-F363-48A9-AAF4-CBAA2E456138}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
