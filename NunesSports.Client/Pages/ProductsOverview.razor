@@ -1,0 +1,50 @@
+﻿@page "/products"
+@inject HttpClient Http
+
+
+<h3>ProductsOverview</h3>
+
+<PageTitle>Products</PageTitle>
+
+<h1>Products</h1>
+
+<p>Lorem.</p>
+
+@if (products.Count == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Product> products = new List<Product>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate asynchronous loading to demonstrate streaming rendering
+        await Task.Delay(500);
+        
+        var result = await Http.GetFromJsonAsync<List<Product>>("api/products");
+    }
+}
