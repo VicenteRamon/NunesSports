@@ -1,6 +1,6 @@
 ﻿@page "/products"
 @inject HttpClient Http
-
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
 <h3>ProductsOverview</h3>
 
@@ -46,5 +46,11 @@ else
         await Task.Delay(500);
         
         var result = await Http.GetFromJsonAsync<List<Product>>("api/products");
+        if (result != null)
+        {
+            products = result;
+        }
+
+        
     }
 }
