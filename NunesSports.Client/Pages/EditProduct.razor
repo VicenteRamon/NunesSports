@@ -1,0 +1,35 @@
+﻿@page "/edit-product"
+@page "/editproduct/{id:int}"
+@inject HttpClient Http
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+
+
+@if (Id == null)
+{
+    <h3>Adionar Produto</h3>
+}
+else
+{
+    <h3>Editar @Produto.Name</h3>
+}
+
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    public  Product Produto { get; set; } =  new Product();
+
+    protected override async Task OnParametersSetAsync()
+    {
+       if (Id is not null)
+        {
+            var result =  await Http.GetFromJsonAsync<Product>($"api/products/{(int)Id}");
+            if (result is not null)
+               {
+                    Produto = result;
+               }
+           
+        }
+    }
+
+}
