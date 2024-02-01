@@ -14,9 +14,18 @@ else
 }
 <EditForm Model="Produto" OnSubmit="HandleSubmit">
     <div>
-<label for="Name">Nome</label>
-        <InputText id="Name" @bind-Value="Produto.Name" />
+        <label for="Name">Nome</label>
+        <InputText id="Name" @bind-Value="Produto.Name" class="form-control" />
     </div>
+    <div>
+        <label for="Price">Preço</label>
+        <InputNumber id="Price" @bind-Value="Produto.Price" class="form-control" />
+    </div>
+    <div>
+        <label for="Description">Descrição</label>
+        <InputTextArea id="Description" @bind-Value="Produto.Description" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </EditForm>
 
 
@@ -37,17 +46,19 @@ else
         }
     }
 
-    Task HandleSubmit()
+    async Task HandleSubmit()
     {
         if (Id is null)
         {
-            Http.PostAsJsonAsync("api/products", Produto);
+           var result = await  Http.PostAsJsonAsync("api/products", Produto);
+            Produto = await result.Content.ReadFromJsonAsync<Product>();
         }
         else
         {
-            Http.PutAsJsonAsync($"api/products/{(int)Id}", Produto);
+            var result = await Http.PutAsJsonAsync($"api/products/{Id}", Produto);
+            Produto = await result.Content.ReadFromJsonAsync<Product>();
         }
-        return Task.CompletedTask;
+        
     }
 
 }

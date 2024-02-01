@@ -33,6 +33,7 @@ else
                     <td>@product.Description</td>
                     <td>@product.Price</td>
                     <td><button class="btn btn-primary" @onclick="@(() => EditProduct(@product.Id))">Editar</button></td>
+                    <td><button class="btn btn-danger" @onclick="@(() => DeleteProduct(@product.Id))">Deletar</button></td>
                 </tr>
             }
         </tbody>
@@ -65,6 +66,15 @@ else
     void EditProduct(int id)
     {
         NavigationManager.NavigateTo($"/edit-product/{id}");
+    }
+
+    async Task DeleteProduct(int id)
+    {
+        var result = await Http.DeleteAsync($"api/products/{id}");
+        if (result.IsSuccessStatusCode)
+        {
+            products = products.Where(p => p.Id != id).ToList();
+        }
     }
 
 }

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\Weather.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Product.Shared\NunesSports.Shared.csproj" />
     <ProjectReference Include="..\NunesSports.Client\NunesSports.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
